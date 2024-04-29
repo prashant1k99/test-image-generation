@@ -1,4 +1,6 @@
-<html class=""><head>
+<!DOCTYPE html>
+<html>
+<head>
   <title>Image Generation</title>
   <style>
     body {
@@ -53,22 +55,6 @@
       margin-top: 20px;
       border-radius: 4px;
     }
-
-    .loader {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #4285f4;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 2s linear infinite;
-      margin: 20px auto;
-      display: none;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body>
@@ -76,36 +62,22 @@
     <h1>Image Generation</h1>
     <input type="text" id="prompt" placeholder="Enter image prompt">
     <button onclick="generateImage()">Generate Image</button>
-    <div class="loader"></div>
+    <p>It may take some time to generate image, please be patient...</p>
     <div id="image-display"></div>
   </div>
 
   <script>
     function generateImage() {
       const prompt = document.getElementById('prompt').value;
-      const loader = document.querySelector('.loader');
+
+      // Here, you would need to call an image generation API with the provided prompt
+      // and retrieve the generated image URL or data.
+      // For demonstration purposes, we'll use a placeholder image.
+      const imageUrl = 'https://via.placeholder.com/500x300?text=Generated+Image';
+
       const imageDisplay = document.getElementById('image-display');
-
-      // Show the loader
-      loader.style.display = 'block';
-      imageDisplay.innerHTML = '';
-
-      // Replace this with your actual image generation API endpoint
-      const apiUrl = 'https://worker-wispy-lake-be6f.prashant-trials-cloudflare.workers.dev/?prompt=' + prompt;
-
-      fetch(apiUrl)
-        .then((response) => response.blob())
-        .then((blob) => {
-          const imageUrl = URL.createObjectURL(blob);
-          imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
-          loader.style.display = 'none';
-        })
-        .catch((error) => {
-          console.error('Error generating image:', error);
-          loader.style.display = 'none';
-          imageDisplay.innerHTML = '<p>Error generating image.</p>';
-        });
+      imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
     }
   </script>
-
-</body></html>
+</body>
+</html>
