@@ -1,0 +1,77 @@
+<html class=""><head>
+  <title>Image Generation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    #image-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #4285f4;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 60%;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3367d6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div id="image-container">
+    <h1>Image Generation</h1>
+    <input type="text" id="prompt" placeholder="Enter image prompt">
+    <button onclick="generateImage()">Generate Image</button>
+    <div id="image-display"></div>
+  </div>
+
+  <script>
+    function generateImage() {
+      const prompt = document.getElementById('prompt').value;
+
+      const imageUrl = 'https://worker-wispy-lake-be6f.prashant-trials-cloudflare.workers.dev/?prompt='+prompt ;
+
+      const imageDisplay = document.getElementById('image-display');
+      imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
+    }
+  </script>
+
+</body></html>
