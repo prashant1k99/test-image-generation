@@ -73,7 +73,7 @@
       // Here, you would need to call an image generation API with the provided prompt
       // and retrieve the generated image URL or data.
       // For demonstration purposes, we'll use a placeholder image.
-      const imageUrl = 'https://via.placeholder.com/500x300?text=Generated+Image';
+      const imageUrl = 'https://worker-wispy-lake-be6f.prashant-trials-cloudflare.workers.dev/?prompt=' + prompt;
 
       const imageDisplay = document.getElementById('image-display');
       imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
