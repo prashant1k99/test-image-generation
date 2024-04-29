@@ -90,15 +90,13 @@
       loader.style.display = 'block';
       imageDisplay.innerHTML = '';
 
-      const imageGeneration = new Promise((resolve) => {
-        setTimeout(() => {
-          const imageUrl = 'https://worker-wispy-lake-be6f.prashant-trials-cloudflare.workers.dev/?prompt=' + prompt;
-          resolve(imageUrl);
-        }, 2000);
-      });
+      // Replace this with your actual image generation API endpoint
+      const apiUrl = 'https://worker-wispy-lake-be6f.prashant-trials-cloudflare.workers.dev/?prompt=' + prompt;
 
-      imageGeneration
-        .then((imageUrl) => {
+      fetch(apiUrl)
+        .then((response) => response.blob())
+        .then((blob) => {
+          const imageUrl = URL.createObjectURL(blob);
           imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
           loader.style.display = 'none';
         })
